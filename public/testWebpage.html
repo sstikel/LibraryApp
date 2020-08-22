@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script>
+    function sendRequest(){
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("viewLibrary").innerHTML = xhttp.responseText;
+        }
+      };
+      xhttp.open("GET", "/api/book" /*"/api/book"*/, true);
+      xhttp.send();
+  }
+
+  function viewRequest(){
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("viewResult").innerHTML = xhttp.responseText;
+        }
+      };
+      const params = "/api/book/" + document.getElementById("viewInput").value;
+      xhttp.open("GET", params /*"/api/book/:id"*/, true);
+      xhttp.send();
+  }
+
+  function searchRequest(){
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("searchResult").innerHTML = xhttp.responseText;
+        }
+      };
+      xhttp.open("POST", "/api/book/search", true);
+      xhttp.send();
+
+
+      //Logout
+      function logout(){
+        var xhttp = new XMLHttpRequest();
+      };
+      xhttp.open("GET", "/api/user/logout", true);
+      xhttp.send();
+  }
+  </script>
+  <title>Test Page</title>
+</head>
+<body>
+  <h1>Welcome to the Test Page</h1>
+  <br>
+
+  <h3>Please fill out the http request form:</h3>
+  <form action="/api/user/login" method="POST">
+    <input type="text" name="username" placeholder="Username"><br>
+    <input type="password" name="password" placeholder="Password"><br>
+    <input type="submit" value="Login">
+  </form>
+  <br>
+  <div id="demo"></div>
+  <br>
+
+  <h3>View Library</h3>
+  <button onclick="sendRequest()">View Library</button><br>
+  <div id="viewLibrary"></div>
+  <br>
+
+  <h3>View Item In Library</h3>
+  <input type="text" id="viewInput" placeholder="Item to View"><br>
+  <button onclick="viewRequest()">View</button><br>
+  <div id="viewResult"></div>
+  <br>
+
+  <h3>Search for Book</h3>
+  <form action="/api/book/search" method="POST"> 
+    <input type="text" name="title" placeholder="Title"><br>
+    <input type="text" name="author" placeholder="Author"><br>
+    <!-- <button onclick="searchRequest()">Search</button><br> -->
+    <input type="submit">
+  </form>
+  <div id="searchResult"></div>
+  <br>
+
+  <h3>Add to Library</h3>
+  <br>
+
+  <h3>Create New User</h3>
+  <form action="api/user/newuser" method="POST">
+    <input type="text" name="fName" placeholder="First Name"><br>
+    <input type="text" name="lName" placeholder="Last Name"><br>
+    <input type="text" name="username" placeholder="Username"><br>
+    <input type="password" name="password" placeholder="Password"><br>
+    <input type="submit" value="Create User"><br>
+  </form> 
+
+  <h3>Logout</h3>
+  <!-- <button onclick="logout()">Logout</button><br> -->
+  <form action="/api/user/logout" method="GET">
+    <input type="submit" value="Logout">
+  </form><br>
+
+  <hr>
+</body>
+<footer>
+  <a href="/home">Home Page</a>
+</footer>
+</html>

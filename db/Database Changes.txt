@@ -1,0 +1,8 @@
+//add user info to each library entry
+ALTER TABLE lib.library
+ADD COLUMN user_id int;
+
+//set previously exsisting items to user 0
+UPDATE lib.library
+SET user_id = 0;
+

@@ -1,0 +1,4 @@
+id |     title     | sub_title | year | format | isbn | author
+----+---------------+-----------+------+--------+------+--------
+  1 | Threat Vector |           | 2013 |      1 |      |
+  2 | Braveheart    |           | 1995 |      2 |      |
