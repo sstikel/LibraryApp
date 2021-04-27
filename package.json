@@ -24,7 +24,7 @@
     "morgan": "^1.9.1",
     "oauth20-provider": "^0.6.0",
     "pg": "^7.12.1",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "session-file-store": "^1.2.0"
   },
   "devDependencies": {
